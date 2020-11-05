@@ -3,10 +3,14 @@ import knex from '../database/connection'
 
 import { existsOrError, notExistsOrError } from '../util/Validations'
 
+
+
 class StudentController {
   static async index(req: Request, res: Response) {
     try {
+      
       const student = await knex('student').select('*')
+
       return res.status(200).json(student)
       
     } catch (error) {
@@ -60,7 +64,6 @@ class StudentController {
 
       return res.status(500).send(error)
     }
-  }
+  } 
 }
-
 export default StudentController
